@@ -23,7 +23,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 
+    androidExtensions {
+        experimental = true
+    }
 }
 
 dependencies {
@@ -38,12 +45,16 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.7.1'
     implementation 'com.squareup.retrofit2:converter-moshi:2.7.1'
 
+    /*Moshi*/
+    implementation "com.squareup.moshi:moshi:1.8.0"
+    implementation "com.squareup.moshi:moshi-kotlin:1.8.0"
+
     /*Okhttp*/
     implementation 'com.squareup.okhttp3:logging-interceptor:4.3.1'
 
     /*lifecycle*/
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
 
     /*Koin*/
     implementation "org.koin:koin-android:2.0.1"
