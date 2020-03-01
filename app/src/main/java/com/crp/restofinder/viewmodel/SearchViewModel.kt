@@ -1,4 +1,4 @@
-package com.crp.restofinder
+package com.crp.restofinder.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
