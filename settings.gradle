@@ -1,0 +1,2 @@
+rootProject.name='RestoFinder'
+include ':app'
