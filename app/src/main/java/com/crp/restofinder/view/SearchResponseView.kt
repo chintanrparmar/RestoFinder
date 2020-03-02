@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProviders
 import com.crp.restofinder.ActivityRetriever
+import com.crp.restofinder.GlideApp
 import com.crp.restofinder.network.SearchResponse
 import com.crp.restofinder.viewmodel.SearchView
 import com.crp.restofinder.viewmodel.SearchViewModel
@@ -14,7 +15,8 @@ import org.koin.core.inject
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class SearchResponseView(val searchResponse:  ViewGroup) : SearchView, KoinComponent, LayoutContainer {
+class SearchResponseView(val searchResponse: ViewGroup) : SearchView, KoinComponent,
+    LayoutContainer {
 
     val activityRetriever: ActivityRetriever by inject()
     override val containerView: View?
@@ -29,6 +31,9 @@ class SearchResponseView(val searchResponse:  ViewGroup) : SearchView, KoinCompo
     }
 
     override fun setSearchData(searchResponse: SearchResponse) {
-        textView.text = searchResponse.results_found.toString()
+//        textView.text = searchResponse.results_found.toString()
+        GlideApp.with(activityRetriever.context)
+            .load(searchResponse.restaurants[0].restaurant.photos?.get(0)?.photo?.url)
+            .into(textView)
     }
 }

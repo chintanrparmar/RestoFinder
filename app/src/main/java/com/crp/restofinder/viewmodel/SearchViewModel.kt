@@ -21,7 +21,7 @@ class SearchViewModel : ViewModel(), KoinComponent {
 
     fun getSearchData() {
         viewModelScope.launch(Dispatchers.IO) {
-            val searchResponse = zomatoAPIInterface.getSearchRespone("mumbai")
+            val searchResponse = zomatoAPIInterface.getSearchRespone("city","3")
             withContext(Main) {
                 view?.setSearchData(searchResponse)
             }

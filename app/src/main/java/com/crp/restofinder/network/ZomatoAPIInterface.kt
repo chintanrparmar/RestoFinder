@@ -20,6 +20,6 @@ interface ZomatoAPIInterface {
         "Accept: application/json",
         "user-key: $API_KEY"
     )
-    @GET("locations?")
-    suspend fun getSearchRespone(@Query("query") query: String): SearchResponse
+    @GET("search?")
+    suspend fun getSearchRespone(@Query("entity_type") entity_type: String,@Query("entity_id") city_id: String): SearchResponse
 }

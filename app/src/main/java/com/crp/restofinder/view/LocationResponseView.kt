@@ -29,6 +29,6 @@ class LocationResponseView(val locationResponse: ViewGroup) : LocationView, Koin
     }
 
     override fun setSearchData(locationResponse: LocationSuggestion) {
-        textView.text = locationResponse.status.toString()
+//        textView.text = locationResponse.status.toString()
     }
 }
