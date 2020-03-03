@@ -76,12 +76,14 @@
         app:layout_constraintWidth_percent="0.8" />
 
     <EditText
+        android:id="@+id/cityEt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/edit_text_bg"
         android:hint="City or location"
         android:padding="10dp"
+        android:text="mumbai"
         app:layout_constraintEnd_toStartOf="@id/goBtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView2"

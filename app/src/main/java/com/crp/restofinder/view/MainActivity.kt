@@ -21,19 +21,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        //LocationResponseView(mainLayout)
-        SearchResponseView(mainLayout)
+
+        goBtn.setOnClickListener { LocationResponseView(mainLayout, cityEt.text.toString()) }
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         useGPSBtn.setOnClickListener {
             if (checkLocationPermission()) {
-                fusedLocationClient.lastLocation
-                    .addOnSuccessListener { location: Location? ->
-                        // Got last known location. In some rare situations this can be null.
-                        Log.e("Latitude", location?.latitude.toString())
-                        Log.e("Longitude", location?.longitude.toString())
-                    }
+                getLatLong()
             } else {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     checkLocationPermission()
@@ -91,13 +86,7 @@ class MainActivity : AppCompatActivity() {
                         ) == PackageManager.PERMISSION_GRANTED)
                     ) {
 
-                        fusedLocationClient.lastLocation
-                            .addOnSuccessListener { location: Location? ->
-                                // Got last known location. In some rare situations this can be null.
-                                Log.e("Latitude", location?.latitude.toString())
-                                Log.e("Longitude", location?.longitude.toString())
-                            }
-
+                        getLatLong()
                     }
                 } else {
                     // permission denied, Disable the
@@ -111,4 +100,13 @@ class MainActivity : AppCompatActivity() {
         // permissions this app might request
     }
 
+    private fun getLatLong() {
+        fusedLocationClient.lastLocation
+            .addOnSuccessListener { location: Location? ->
+                // Got last known location. In some rare situations this can be null.
+                Log.e("Latitude", location?.latitude.toString())
+                Log.e("Longitude", location?.longitude.toString())
+            }
+
+    }
 }

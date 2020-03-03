@@ -1,5 +1,7 @@
 package com.crp.restofinder.view
 
+import android.content.Intent
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
@@ -14,9 +16,11 @@ import org.koin.core.inject
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class LocationResponseView(val locationResponse: ViewGroup) : LocationView, KoinComponent, LayoutContainer {
+class LocationResponseView(private val locationResponse: ViewGroup, cityName: String) :
+    LocationView, KoinComponent,
+    LayoutContainer {
 
-    val activityRetriever: ActivityRetriever by inject()
+    private val activityRetriever: ActivityRetriever by inject()
     override val containerView: View?
         get() = locationResponse
 
@@ -24,11 +28,13 @@ class LocationResponseView(val locationResponse: ViewGroup) : LocationView, Koin
         val viewModel = ViewModelProviders.of(activityRetriever.getActivity() as FragmentActivity)
             .get(LocationViewModel::class.java)
         viewModel.view = this
-        viewModel.getSearchData()
+        viewModel.getLocationData(cityName)
 
     }
 
     override fun setSearchData(locationResponse: LocationSuggestion) {
-//        textView.text = locationResponse.status.toString()
+        val intent = Intent(activityRetriever.context, RestaurantList::class.java)
+        intent.putExtra("city", locationResponse.location_suggestions[0].city_id.toString())
+        activityRetriever.context.startActivity(intent)
     }
 }
