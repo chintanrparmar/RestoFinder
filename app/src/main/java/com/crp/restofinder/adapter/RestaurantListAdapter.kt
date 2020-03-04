@@ -9,20 +9,38 @@ import androidx.recyclerview.widget.RecyclerView
 import com.crp.restofinder.GlideApp
 import com.crp.restofinder.R
 import com.crp.restofinder.network.Restaurant
+import com.crp.restofinder.network.RestaurantX
+import kotlinx.android.synthetic.main.restaurant_item.view.*
 
 class RestaurantListAdapter(
     val context: Context,
     private val list: List<Restaurant>,
-    val adapterOnClick: (Any) -> Unit
+    val adapterOnClick: (url: String, name: String) -> Unit
 ) :
     RecyclerView.Adapter<RestaurantListAdapter.RestaurantListView>() {
 
     inner class RestaurantListView(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val photoIv: ImageView = itemView.findViewById(R.id.PhotoIv)
 
+        fun bind(restaurant: RestaurantX) {
 
-        fun setItem(item: Any) {
-            itemView.setOnClickListener { adapterOnClick(item) }
+            itemView.nameTv.text = restaurant.name
+            itemView.ratingTv.text = restaurant.user_rating.aggregate_rating
+            GlideApp.with(context)
+                .load(restaurant.photos?.get(0)?.photo?.url)
+                .into(itemView.photoIv)
+            restaurant.photos?.get(0)?.photo?.url?.let {
+                restaurant.name?.let { it1 ->
+                    setItem(
+                        it,
+                        it1
+                    )
+                }
+            }
+
+        }
+
+        private fun setItem(url: String, name: String) {
+            itemView.setOnClickListener { adapterOnClick(url, name) }
         }
     }
 
@@ -37,11 +55,6 @@ class RestaurantListAdapter(
     }
 
     override fun onBindViewHolder(holder: RestaurantListView, position: Int) {
-
-        val restaurant = list[position]
-        GlideApp.with(context)
-            .load(restaurant.restaurant.photos?.get(0)?.photo?.url)
-            .into(holder.photoIv)
-        restaurant.restaurant.photos?.get(0)?.photo?.url?.let { holder.setItem(it) }
+        holder.bind(list[position].restaurant)
     }
 }

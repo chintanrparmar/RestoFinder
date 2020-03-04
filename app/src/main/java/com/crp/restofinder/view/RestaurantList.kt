@@ -11,7 +11,8 @@ class RestaurantList : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_restaurant_list)
-        SearchResponseView(restListLayout)
+        val locality=intent.getStringExtra("location")
+        SearchResponseView(restListLayout,locality)
         Toast.makeText(
             applicationContext,
             "Kuch to ${intent.getStringExtra("city")}",

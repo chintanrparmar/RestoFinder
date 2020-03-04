@@ -16,9 +16,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".view.RestaurantDetail"></activity>
         <activity android:name=".view.RestaurantList" />
-        <activity
-            android:name=".view.MainActivity"
-            android:theme="@style/AppThemeNoActionBar">
+        <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
