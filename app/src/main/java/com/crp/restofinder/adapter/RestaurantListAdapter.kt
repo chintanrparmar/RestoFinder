@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.restaurant_item.view.*
 class RestaurantListAdapter(
     val context: Context,
     private val list: List<Restaurant>,
-    val adapterOnClick: (url: String, name: String) -> Unit
+    val adapterOnClick: (Any) -> Unit
 ) :
     RecyclerView.Adapter<RestaurantListAdapter.RestaurantListView>() {
 
@@ -28,19 +28,12 @@ class RestaurantListAdapter(
             GlideApp.with(context)
                 .load(restaurant.photos?.get(0)?.photo?.url)
                 .into(itemView.photoIv)
-            restaurant.photos?.get(0)?.photo?.url?.let {
-                restaurant.name?.let { it1 ->
-                    setItem(
-                        it,
-                        it1
-                    )
-                }
-            }
 
+            restaurant.name?.let { setItem(restaurant) }
         }
 
-        private fun setItem(url: String, name: String) {
-            itemView.setOnClickListener { adapterOnClick(url, name) }
+        private fun setItem(restaurantX: RestaurantX) {
+            itemView.setOnClickListener { adapterOnClick(restaurantX) }
         }
     }
 

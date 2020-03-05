@@ -14,12 +14,19 @@ interface ZomatoAPIInterface {
         "user-key: $API_KEY"
     )
     @GET("locations?")
-    suspend fun getLocationRespone(@Query("query") query: String): LocationSuggestion
+    suspend fun getLocationRespone(
+        @Query("query") query: String,
+        @Query("lat") latitude: String,
+        @Query("lon") longitude: String
+    ): LocationSuggestion
 
     @Headers(
         "Accept: application/json",
         "user-key: $API_KEY"
     )
     @GET("search?")
-    suspend fun getSearchRespone(@Query("entity_type") entity_type: String,@Query("entity_id") city_id: String): SearchResponse
+    suspend fun getSearchRespone(
+        @Query("entity_type") entity_type: String,
+        @Query("entity_id") city_id: String
+    ): SearchResponse
 }

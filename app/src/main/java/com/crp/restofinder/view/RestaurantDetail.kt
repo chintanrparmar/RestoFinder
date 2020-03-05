@@ -14,11 +14,15 @@ class RestaurantDetail : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_restaurant_detail)
 
-        restNameTv.text=intent.getStringExtra("name")
+        restNameTv.text = intent.getStringExtra("name")
+        cuisineTv.text = intent.getStringExtra("cuisine")
+        ratingTv.text = getString(R.string.rating, intent.getStringExtra("rating"))
 
         GlideApp.with(this)
             .load(intent.getStringExtra("url"))
             .into(coverIv)
+
+        backIv.setOnClickListener { finish() }
 
     }
 

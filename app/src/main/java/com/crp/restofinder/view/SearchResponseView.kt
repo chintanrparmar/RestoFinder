@@ -6,7 +6,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import com.crp.restofinder.ActivityRetriever
+import com.crp.restofinder.R
 import com.crp.restofinder.adapter.RestaurantListAdapter
+import com.crp.restofinder.network.RestaurantX
 import com.crp.restofinder.network.SearchResponse
 import com.crp.restofinder.viewmodel.SearchView
 import com.crp.restofinder.viewmodel.SearchViewModel
@@ -36,15 +38,25 @@ class SearchResponseView(private val searchResponse: ViewGroup, title: String) :
 
     override fun setSearchData(searchResponse: SearchResponse) {
 
-        countTv.text = "${searchResponse.results_shown} Restaurants Found"
+        loadingTv.visibility = View.GONE
+        progressBar.visibility = View.GONE
+        countTv.text = activityRetriever.context.getString(
+            R.string.restaurant_found,
+            searchResponse.results_shown.toString()
+        )
         restaurantRv.adapter =
             RestaurantListAdapter(
                 activityRetriever.context,
                 searchResponse.restaurants
-            ) { imageUrl: String, name: String ->
+            ) {
+                val restaurantX = it as RestaurantX
                 val intent = Intent(activityRetriever.context, RestaurantDetail::class.java)
-                intent.putExtra("url", imageUrl)
-                intent.putExtra("name", name)
+                restaurantX.photos?.get(0)?.photo?.url.let { it1 ->
+                    intent.putExtra("url", it1)
+                }
+                intent.putExtra("name", restaurantX.name)
+                intent.putExtra("cuisine", restaurantX.cuisines)
+                intent.putExtra("rating", restaurantX.user_rating.aggregate_rating)
                 activityRetriever.context.startActivity(intent)
             }
     }

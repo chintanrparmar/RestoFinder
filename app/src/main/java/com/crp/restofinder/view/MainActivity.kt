@@ -18,13 +18,24 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
     private val MY_PERMISSIONS_REQUEST_LOCATION = 99
     private lateinit var fusedLocationClient: FusedLocationProviderClient
+
+    companion object {
+        var lat: String = ""
+        var lon: String = ""
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        goBtn.setOnClickListener { LocationResponseView(mainLayout, cityEt.text.toString()) }
+        LocationResponseView(
+            mainLayout
+        )
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+
+        if (checkLocationPermission()) {
+            getLatLong()
+        }
 
         useGPSBtn.setOnClickListener {
             if (checkLocationPermission()) {
@@ -104,6 +115,11 @@ class MainActivity : AppCompatActivity() {
         fusedLocationClient.lastLocation
             .addOnSuccessListener { location: Location? ->
                 // Got last known location. In some rare situations this can be null.
+
+                location?.let {
+                    lat = it.latitude.toString()
+                    lon = it.longitude.toString()
+                }
                 Log.e("Latitude", location?.latitude.toString())
                 Log.e("Longitude", location?.longitude.toString())
             }

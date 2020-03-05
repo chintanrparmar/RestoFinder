@@ -12,18 +12,18 @@ import org.koin.core.KoinComponent
 import org.koin.core.inject
 
 interface LocationView {
-    fun setSearchData(searchResponse: LocationSuggestion)
+    fun setLocationData(locationSuggestion: LocationSuggestion)
 }
 
 class LocationViewModel : ViewModel(), KoinComponent {
     private val zomatoAPIInterface: ZomatoAPIInterface by inject()
     var view: LocationView? = null
 
-    fun getLocationData(cityName: String) {
+    fun getLocationData(cityName: String,lat:String,lon:String) {
         viewModelScope.launch(Dispatchers.IO) {
-            val locationResponse = zomatoAPIInterface.getLocationRespone(cityName)
+            val locationResponse = zomatoAPIInterface.getLocationRespone(cityName,lat,lon)
             withContext(Main) {
-                view?.setSearchData(locationResponse)
+                view?.setLocationData(locationResponse)
             }
         }
     }

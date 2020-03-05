@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">RestoFinder</string>
+    <string name="restaurant_found">%1$s Restaurants Found</string>
+    <string name="rating">%1$s out of 5</string>
 </resources>
