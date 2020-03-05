@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RestaurantDetail">
+
+    <ImageView
+        android:id="@+id/coverIv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="H,4:3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/backIv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/ic_arrow_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/restNameTv"
+        style="@style/TextAppearance.AppCompat.Large"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:textColor="@color/colorAccent"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/coverIv"
+        app:layout_constraintWidth_percent="0.9"
+        tools:text="Restaurant Name" />
+
+    <TextView
+        android:id="@+id/cuisineTv"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/restNameTv"
+        app:layout_constraintWidth_percent="0.9"
+        tools:text="Restaurant Name" />
+
+    <TextView
+        android:id="@+id/ratingTv"
+        style="@style/TextAppearance.AppCompat.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/green_tag_detail_bg"
+        android:drawableStart="@drawable/ic_star"
+        android:drawablePadding="5dp"
+        android:paddingStart="12dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="8dp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.92"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cuisineTv" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
