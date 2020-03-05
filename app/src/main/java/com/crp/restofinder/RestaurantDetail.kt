@@ -1,10 +1,8 @@
-package com.crp.restofinder.view
+package com.crp.restofinder
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import com.crp.restofinder.GlideApp
-import com.crp.restofinder.R
+import com.crp.restofinder.utils.GlideApp
 import kotlinx.android.synthetic.main.activity_restaurant_detail.*
 
 class RestaurantDetail : AppCompatActivity() {

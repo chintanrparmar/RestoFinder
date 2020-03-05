@@ -1,4 +1,4 @@
-package com.crp.restofinder
+package com.crp.restofinder.utils
 
 import android.app.Activity
 import android.content.Context

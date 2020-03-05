@@ -1,4 +1,4 @@
-package com.crp.restofinder.view
+package com.crp.restofinder
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -10,7 +10,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.crp.restofinder.R
+import com.crp.restofinder.view.LocationResponseView
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import kotlinx.android.synthetic.main.activity_main.*

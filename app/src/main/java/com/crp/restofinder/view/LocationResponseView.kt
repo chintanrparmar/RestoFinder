@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
-import com.crp.restofinder.ActivityRetriever
-import com.crp.restofinder.Helper
+import com.crp.restofinder.utils.ActivityRetriever
+import com.crp.restofinder.utils.Helper
+import com.crp.restofinder.MainActivity
+import com.crp.restofinder.RestaurantList
 import com.crp.restofinder.network.LocationSuggestion
 import com.crp.restofinder.viewmodel.LocationView
 import com.crp.restofinder.viewmodel.LocationViewModel

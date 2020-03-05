@@ -14,9 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.RestaurantDetail"></activity>
-        <activity android:name=".view.RestaurantList" />
-        <activity android:name=".view.MainActivity">
+        <activity android:name=".RestaurantDetail"></activity>
+        <activity android:name=".RestaurantList" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,5 +1,5 @@
 
-package com.crp.restofinder
+package com.crp.restofinder.utils
 
 import android.content.Context
 import android.util.Log

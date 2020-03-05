@@ -1,10 +1,8 @@
-package com.crp.restofinder.view
+package com.crp.restofinder
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import com.crp.restofinder.R
-import kotlinx.android.synthetic.main.activity_restaurant_detail.*
+import com.crp.restofinder.view.SearchResponseView
 import kotlinx.android.synthetic.main.activity_restaurant_list.*
 
 class RestaurantList : AppCompatActivity() {

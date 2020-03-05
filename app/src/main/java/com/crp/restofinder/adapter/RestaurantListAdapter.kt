@@ -4,12 +4,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.crp.restofinder.GlideApp
 import com.crp.restofinder.R
 import com.crp.restofinder.network.Restaurant
 import com.crp.restofinder.network.RestaurantX
+import com.crp.restofinder.utils.GlideApp
 import kotlinx.android.synthetic.main.restaurant_item.view.*
 
 class RestaurantListAdapter(

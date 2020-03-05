@@ -3,6 +3,7 @@ package com.crp.restofinder
 import android.app.Application
 import com.crp.restofinder.di.appModule
 import com.crp.restofinder.di.networkModule
+import com.crp.restofinder.utils.DefaultCurrentActivityListener
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger

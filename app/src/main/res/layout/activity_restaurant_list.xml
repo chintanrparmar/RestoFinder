@@ -5,7 +5,7 @@
     android:id="@+id/restListLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.RestaurantList">
+    tools:context=".RestaurantList">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constrainLt"

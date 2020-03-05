@@ -5,8 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
-import com.crp.restofinder.ActivityRetriever
+import com.crp.restofinder.utils.ActivityRetriever
 import com.crp.restofinder.R
+import com.crp.restofinder.RestaurantDetail
 import com.crp.restofinder.adapter.RestaurantListAdapter
 import com.crp.restofinder.network.RestaurantX
 import com.crp.restofinder.network.SearchResponse
