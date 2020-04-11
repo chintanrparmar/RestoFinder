@@ -27,9 +27,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        LocationResponseView(
-            mainLayout
-        )
+        LocationResponseView(mainLayout)
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
@@ -119,9 +117,15 @@ class MainActivity : AppCompatActivity() {
                 location?.let {
                     lat = it.latitude.toString()
                     lon = it.longitude.toString()
+                    Log.e("Latitude", it.latitude.toString())
+                    Log.e("Longitude", it.longitude.toString())
+                    Toast.makeText(
+                        applicationContext,
+                        "Location Fetched Successfully",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
-                Log.e("Latitude", location?.latitude.toString())
-                Log.e("Longitude", location?.longitude.toString())
+
             }
 
     }

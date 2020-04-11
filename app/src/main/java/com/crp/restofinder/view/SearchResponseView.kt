@@ -19,7 +19,7 @@ import org.koin.core.KoinComponent
 import org.koin.core.inject
 
 
-class SearchResponseView(private val searchResponse: ViewGroup, title: String) : SearchView,
+class SearchResponseView(private val searchResponse: ViewGroup) : SearchView,
     KoinComponent,
     LayoutContainer {
 
@@ -32,8 +32,7 @@ class SearchResponseView(private val searchResponse: ViewGroup, title: String) :
             .get(SearchViewModel::class.java)
         viewModel.view = this
         viewModel.getSearchData()
-        locationTv.text = title
-
+        locationTv.text = activityRetriever.getActivity()?.intent?.getStringExtra("location")
 
     }
 

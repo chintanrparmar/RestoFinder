@@ -10,7 +10,6 @@ class RestaurantList : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_restaurant_list)
-        val locality = intent.getStringExtra("location")
-        SearchResponseView(restListLayout, locality!!)
+        SearchResponseView(restListLayout)
     }
 }

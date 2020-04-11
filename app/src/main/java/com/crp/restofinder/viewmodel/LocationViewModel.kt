@@ -19,12 +19,14 @@ class LocationViewModel : ViewModel(), KoinComponent {
     private val zomatoAPIInterface: ZomatoAPIInterface by inject()
     var view: LocationView? = null
 
-    fun getLocationData(cityName: String,lat:String,lon:String) {
+    fun getLocationData(cityName: String, lat: String, lon: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            val locationResponse = zomatoAPIInterface.getLocationRespone(cityName,lat,lon)
+            val locationResponse = zomatoAPIInterface.getLocationRespone(cityName, lat, lon)
             withContext(Main) {
                 view?.setLocationData(locationResponse)
             }
         }
     }
+
 }
+
